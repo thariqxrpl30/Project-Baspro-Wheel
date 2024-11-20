@@ -71,6 +71,7 @@ def draw_wheel():
     center_y = 200  # Posisi y dari tengah roda
     radius = 150    # Radius roda
 
+    #Jika Hanya Menginputkan 1 elemen saja, Warna lingkaran akan berubah menjadi merah
     if num_names == 1:
         print("Menggambar roda merah penuh")
         canvas.create_oval(50, 50, 350, 350, fill="red", outline="white", width=2)
@@ -179,7 +180,7 @@ def draw_arrow():
     # Buat panah yang mengarah ke dalam dan tidak berputar
     canvas.create_polygon(
         points,
-        fill="silver",
+        fill="silver",  #Mengubah Warna Panah
         outline="white",
         width=2,
         tags="indicator"
@@ -196,35 +197,26 @@ def draw_arrow():
         arrow_x, arrow_y,  # Ujung panah (paling kiri)
         arrow_x + arrow_base, arrow_y - arrow_size,  # Ujung atas
         arrow_x + arrow_base, arrow_y + arrow_size,  # Ujung bawah
-    ]
-    
-    # Buat panah yang mengarah ke dalam dan tidak berputar
-    canvas.create_polygon(
-        points,
-        fill="silver",
-        outline="white",
-        width=2,
-        tags="indicator"
-    )
+    ]  
     
 # Inisialisasi GUI
 root = tk.Tk()
 root.title("Wheel of Names")
 root.geometry("500x700")
-root.config(bg="#2b2b2b")
+root.config(bg="yellow") #mengubah warna latar GUI
 
 # Data
 names = []
 current_angle = 0
-colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"] #Mengubah Warna Sektor tiap Elemen
 
 # Canvas untuk roda
-canvas = tk.Canvas(root, width=400, height=400, bg="#2b2b2b", highlightthickness=0)
+canvas = tk.Canvas(root, width=400, height=400, highlightthickness=0)
 canvas.pack(pady=10)
 
 
 # Frame untuk input dan tombol
-frame = tk.Frame(root, bg="#2b2b2b")
+frame = tk.Frame(root, bg="yellow") #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
 frame.pack(pady=10)
 
 # Konfigurasi kolom agar ukuran seragam
@@ -239,33 +231,34 @@ entry.grid(row=0, column=0, sticky="nsew", padx=5, pady=5, ipady=5)
 
 # Tombol Tambahkan
 add_button = tk.Button(frame, text="Tambahkan", command=add_name, 
-                      bg="green", fg="white", font=("Arial", 12), width=12, height=1)
+                      bg="green", fg="white", font=("Arial", 12), width=12, height=1)   #Mengubah Warna Tombol Hijau
 add_button.grid(row=0, column=1, padx=5, pady=5)
 
 # Tombol Reset
 reset_button = tk.Button(frame, text="Reset", command=reset_names, 
-                        bg="red", fg="white", font=("Arial", 12), width=12, height=1)
+                        bg="red", fg="white", font=("Arial", 12), width=12, height=1)   #Mengubah Warna Tombol Merah
 reset_button.grid(row=0, column=2, padx=5, pady=5)
 
 # Tombol SPIN
 spin_button = tk.Button(frame, text="SPIN!", command=spin_wheel, 
-                       bg="#f39c12", fg="white", font=("Arial", 12, "bold"), 
+                       bg="#f39c12", fg="white", font=("Arial", 12, "bold"),    #Mengubah Warna Tombol Spin
                        width=12, height=1)
 spin_button.grid(row=0, column=3, padx=5, pady=5)
 
-
 # Listbox label
-listbox_label = tk.Label(root, text="Daftar Nama:", bg="#2b2b2b", fg="white", font=("Arial", 12))
+listbox_label = tk.Label(root, text="Daftar Nama:", bg="yellow", #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
+                         fg="white", font=("Arial", 12))
 listbox_label.pack()
 
 # Listbox
-listbox = tk.Listbox(root, width=30, height=10, bg="#3b3b3b", fg="white", 
-                     selectbackground="green", relief=tk.SOLID, bd=1)
+listbox = tk.Listbox(root, width=30, height=10, bg="#ff009d" #Mengubah Warna Background List 
+                     , fg="white", 
+                     relief=tk.SOLID, bd=1)  
 listbox.pack(pady=10)
 
 # Label hasil
 result_label = tk.Label(root, text="", font=("Arial", 14, "bold"), 
-                       bg="#2b2b2b", fg="white")
+                       bg="yellow", fg="white")    #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
 result_label.pack(pady=10)
 
 # Gambar roda awal
