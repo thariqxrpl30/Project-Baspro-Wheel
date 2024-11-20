@@ -203,7 +203,7 @@ def draw_arrow():
 root = tk.Tk()
 root.title("Wheel of Names")
 root.geometry("500x700")
-root.config(bg="yellow") #mengubah warna latar GUI
+root.config(bg="black") #mengubah warna latar GUI
 
 # Data
 names = []
@@ -211,12 +211,14 @@ current_angle = 0
 colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"] #Mengubah Warna Sektor tiap Elemen
 
 # Canvas untuk roda
-canvas = tk.Canvas(root, width=400, height=400, highlightthickness=0)
+canvas = tk.Canvas(root, width=400, height=400, highlightthickness=0
+                   , bg="black" #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
+                   )
 canvas.pack(pady=10)
 
 
 # Frame untuk input dan tombol
-frame = tk.Frame(root, bg="yellow") #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
+frame = tk.Frame(root, bg="black") #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
 frame.pack(pady=10)
 
 # Konfigurasi kolom agar ukuran seragam
@@ -246,7 +248,7 @@ spin_button = tk.Button(frame, text="SPIN!", command=spin_wheel,
 spin_button.grid(row=0, column=3, padx=5, pady=5)
 
 # Listbox label
-listbox_label = tk.Label(root, text="Daftar Nama:", bg="yellow", #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
+listbox_label = tk.Label(root, text="Daftar Nama:", bg="black", #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
                          fg="white", font=("Arial", 12))
 listbox_label.pack()
 
@@ -258,7 +260,8 @@ listbox.pack(pady=10)
 
 # Label hasil
 result_label = tk.Label(root, text="", font=("Arial", 14, "bold"), 
-                       bg="yellow", fg="white")    #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
+                       bg="black"  #Jika Mengubah Warna Latar GUi, maka bg harus diubah juga
+                       , fg="white")    
 result_label.pack(pady=10)
 
 # Gambar roda awal
