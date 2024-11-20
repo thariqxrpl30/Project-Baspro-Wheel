@@ -216,7 +216,7 @@ root.config(bg="#2b2b2b")
 # Data
 names = []
 current_angle = 0
-colors = ["#FF5733", "#33FF57", "#3357FF", "#F1C40F", "#8E44AD", "#E67E22", "#1ABC9C"]
+colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
 
 # Canvas untuk roda
 canvas = tk.Canvas(root, width=400, height=400, bg="#2b2b2b", highlightthickness=0)
