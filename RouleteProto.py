@@ -25,16 +25,9 @@ def reset_names():
 def spin_wheel():
     """Putar roda dengan animasi."""
     global current_angle
-    
-    if not names:
-        result_label.config(text="Tambahkan elemen terlebih dahulu!", fg="red")
-        return
-
-    result_label.config(text="Spinning...", fg="white")
-    root.update()
 
     spins = random.randint(30, 50)
-    speed = 0.01
+    speed = 0.0001
     for _ in range(spins):
         current_angle = (current_angle + 15) % 360
         draw_wheel()
@@ -57,7 +50,7 @@ def spin_wheel():
         
     final_choice = names[index]
     
-    messagebox.showinfo("Pemenang!", f"Selamat kepada:\n\n{final_choice}")
+    messagebox.showinfo("You got a choice!", f"Pilihan untukmu adalah:\n\n{final_choice}")
     result_label.config(text=f"Pemenang: {final_choice}", fg="green")
 
 def draw_wheel():
@@ -71,16 +64,14 @@ def draw_wheel():
     center_y = 200  # Posisi y dari tengah roda
     radius = 150    # Radius roda
 
-    #Jika Hanya Menginputkan 1 elemen saja, Warna lingkaran akan berubah menjadi merah
+    #Jika Hanya Menginputkan 1 elemen saja, Warna lingkaran akan berubah menjadi blossom pink
     if num_names == 1:
-        print("Menggambar roda merah penuh")
-        canvas.create_oval(50, 50, 350, 350, fill="red", outline="white", width=2)
+        canvas.create_oval(50, 50, 350, 350, fill="#F9B7FF", outline="white", width=2)
         canvas.create_text(center_x, center_y, 
                            text=names[0], 
-                           fill="white", 
+                           fill="black", 
                            font=("Arial", 16, "bold"))
         return
-    print("Menggambar roda dengan banyak elemen")
     angle_per_sector = 360 / num_names
     start_angle = current_angle
 
@@ -110,7 +101,7 @@ def draw_wheel():
 
         canvas.create_text(x, y, 
                             text=name, 
-                            fill="white", 
+                            fill="black", 
                             font=("Arial", 12, "bold"), 
                             angle=rotation,
                             tags="wheel")
@@ -156,7 +147,7 @@ def draw_wheel():
 
         canvas.create_text(x, y, 
                          text=name, 
-                         fill="white", 
+                         fill="black", 
                          font=("Arial", 12, "bold"), 
                          angle=rotation,
                          tags="wheel")
@@ -180,8 +171,8 @@ def draw_arrow():
     # Buat panah yang mengarah ke dalam dan tidak berputar
     canvas.create_polygon(
         points,
-        fill="silver",  #Mengubah Warna Panah
-        outline="white",
+        fill="#9F000F",  #Mengubah Warna Panah
+        outline="black",
         width=2,
         tags="indicator"
     )
@@ -201,14 +192,17 @@ def draw_arrow():
     
 # Inisialisasi GUI
 root = tk.Tk()
-root.title("Wheel of Names")
+root.title("Twist & Turn")
 root.geometry("500x700")
 root.config(bg="black") #mengubah warna latar GUI
 
 # Data
 names = []
 current_angle = 0
-colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"] #Mengubah Warna Sektor tiap Elemen
+colors = ["#F9B7FF", "#EDE6D6", "#E0B0FF", "#9E7BFF", "#822EFF", "#736AFF", "#D291BC", 
+          "#D462FF", "#FF77FF", "#FF69B4", "#FFB2D0", "#F8B88B", "#F75D59", "#FF8674", 
+          "#FFA07A", "#8A865D", "#E9AB17", "#BCB88A", "#FBB117", "#FFDAB9", 
+          "#64E986", "#A0D6B4", "#A0D6B4"] #Mengubah Warna Sektor tiap Elemen
 
 # Canvas untuk roda
 canvas = tk.Canvas(root, width=400, height=400, highlightthickness=0
@@ -233,17 +227,17 @@ entry.grid(row=0, column=0, sticky="nsew", padx=5, pady=5, ipady=5)
 
 # Tombol Tambahkan
 add_button = tk.Button(frame, text="Tambahkan", command=add_name, 
-                      bg="green", fg="white", font=("Arial", 12), width=12, height=1)   #Mengubah Warna Tombol Hijau
+                      bg="green", fg="black", font=("Arial", 12), width=12, height=1)   #Mengubah Warna Tombol Hijau
 add_button.grid(row=0, column=1, padx=5, pady=5)
 
 # Tombol Reset
 reset_button = tk.Button(frame, text="Reset", command=reset_names, 
-                        bg="red", fg="white", font=("Arial", 12), width=12, height=1)   #Mengubah Warna Tombol Merah
+                        bg="red", fg="black", font=("Arial", 12), width=12, height=1)   #Mengubah Warna Tombol Merah
 reset_button.grid(row=0, column=2, padx=5, pady=5)
 
 # Tombol SPIN
 spin_button = tk.Button(frame, text="SPIN!", command=spin_wheel, 
-                       bg="#f39c12", fg="white", font=("Arial", 12, "bold"),    #Mengubah Warna Tombol Spin
+                       bg="#f39c12", fg="black", font=("Arial", 12, "bold"),    #Mengubah Warna Tombol Spin
                        width=12, height=1)
 spin_button.grid(row=0, column=3, padx=5, pady=5)
 
@@ -253,8 +247,8 @@ listbox_label = tk.Label(root, text="Daftar Nama:", bg="black", #Jika Mengubah W
 listbox_label.pack()
 
 # Listbox
-listbox = tk.Listbox(root, width=30, height=10, bg="#ff009d" #Mengubah Warna Background List 
-                     , fg="white", 
+listbox = tk.Listbox(root, width=30, height=10, bg="#DADBDD" #Mengubah Warna Background List 
+                     , fg="black", #Mengubah Warna Tulisan didalam List
                      relief=tk.SOLID, bd=1)  
 listbox.pack(pady=10)
 
